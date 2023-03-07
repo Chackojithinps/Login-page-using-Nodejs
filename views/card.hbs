@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row mt-5" >
+        {{#each cardItems}}
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top img" src="{{this.Image}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{this.Name}} </h5>
+                    <p class="card-text">{{this.Message}}</p>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
