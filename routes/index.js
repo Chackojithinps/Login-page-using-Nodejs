@@ -3,7 +3,7 @@ const nocache = require('nocache');
 var router = express.Router();
 
 /* GET home page. */
-  router.get('/',nocache(), function(req, res, next) {
+  router.get('/',nocache(),function(req, res, next) {
       if(req.session.user){
         res.redirect('/home')
       }
@@ -17,7 +17,6 @@ router.get('/home',(req,res)=>{
     res.render('home')
   }else{
     res.redirect('/')
-    
   }
 })
 const Username="jithin";
