@@ -14,16 +14,18 @@ var router = express.Router();
 
 router.get('/home',(req,res)=>{
   if(req.session.user){
-    res.render('home')
+    // console.log(req.body)
+    res.render('home',{name:"jithin"})
   }else{
-    res.redirect('/')
+    res.redirect('/') 
   }
 })
 const Username="jithin";
 const Password="123";
 router.post('/home',nocache(),(req,res)=>{
-  const {username,password}=req.body
-  if(username==Username && password == Password){
+  // console.log(req.body)
+  const {username,password1}=req.body
+  if(username==Username && password1 == Password){
     req.session.user=true;
     res.redirect("/home")
   }else{
@@ -104,7 +106,11 @@ router.get('/table',(req,res)=>{
 
     }
    ]
+   if(req.session.user){
    res.render('table',{tableItems})
+  }else{
+     res.redirect('/')
+   }
 })
 
 router.get('/list',(req,res)=>{
@@ -119,10 +125,16 @@ router.get('/list',(req,res)=>{
    "Aaron wan-bisakka",
    "Fred",
    "Bruno Fernades"]
-   res.render('list',{players})
+   if(req.session.user){
+    res.render('list',{players})
+ 
+   }else{
+     res.redirect('/')
+   }
 })
 router.get('/logout',(req,res)=>{
-  req.session.user=false;
+  // req.session.user=false;
+  req.session.destroy();
   res.redirect('/')
 })
 module.exports = router;
